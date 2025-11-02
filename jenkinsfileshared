@@ -1,6 +1,6 @@
 library identifier: 'devops-shared-repo@master', retriever: modernSCM(
   [$class: 'GitSCMSource',
-   remote: 'https://github.com/ranjith413/devops-shared-repo.git',
+   remote: 'https://github.com/ranjith-duvasi/devops-shared-repo.git',
    credentialsId: 'github-token'])
 
 jenkinsfile()
