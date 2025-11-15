@@ -58,7 +58,7 @@
     }
     stage("Update Image in manifests"){
         steps{
-            withCredentials{([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GIT_USER')])
+            withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GIT_USER')]){
             script{
                 sh '''
                 cd helmcharts/
