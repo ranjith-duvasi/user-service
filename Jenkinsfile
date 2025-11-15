@@ -83,11 +83,9 @@
                     "head": "${BRANCH}",
                     "base": "main",
                     "body": "Auto PR by Jenkins"
-                }
-                EOF
+                }EOF
                 )
                 '''
-
             }
         }
         }
