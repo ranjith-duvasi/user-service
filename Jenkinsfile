@@ -63,7 +63,7 @@
                 sh '''
                 cd helm-charts/
                 BRANCH="release/${IMAGE_TAG}"
-                REP0_OWNER="ranjith413"
+                REPO_OWNER="ranjith413"
                 git config --global user.email "dranjith956@gmail.com"
                 git config --global user.name "ranjith413"
                 git checkout -b "${BRANCH}"
