@@ -77,7 +77,7 @@
                 #create a PR
                 curl -s -X POST -H "Authorization: token ${GIT_TOKEN}" \
                 -d '{"title":"${COMMIT_MESSAGE}","head":"${BRANCH}","base":"main","body":"Auto PR by Jenkins"}' \
-                https://api.github.com/repos/${REPO_OWNER}/{REPO_NAME}/pulls
+                https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls
                  '''
 
             }
