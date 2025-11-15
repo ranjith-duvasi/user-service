@@ -77,7 +77,7 @@
                 #create a PR
                 curl -s -X POST -H "Authorization: token ${GIT_TOKEN}" \
                 -H "Accept: application/vnd.github+json" \
-                -d "{\"title\":\"${COMMIT_MESSAGE}\",\"head\":\"${BRANCH}\",\"base\":\"main\",\"body\":\"Auto PR by Jenkins\"}" \
+                -d "{\"title\":\"update image tag ${BRANCH}\",\"head\":\"${BRANCH}\",\"base\":\"main\",\"body\":\"Auto PR by Jenkins\"}" \
                 "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls"
                 '''
             }
