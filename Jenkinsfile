@@ -61,7 +61,7 @@
             withCredentials([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GIT_USER')]){
             script{
                 sh '''
-                cd helmcharts/
+                cd helm-charts/
                 BRANCH="release/${IMAGE_TAG}"
                 REP0_OWNER="ranjith413"
                 git config --global user.email "dranjith956@gmail.com"
