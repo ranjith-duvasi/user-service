@@ -56,6 +56,29 @@
             }
         }
     }
+    stage("Update Image in manifests"){
+        steps{
+            withCredentials{([usernamePassword(credentialsId: 'github_token', passwordVariable: 'GIT_TOKEN', usernameVariable: 'GIT_USER')])
+            script{
+                sh """
+                cd helmcharts/
+                BRANCH="release/${IMAGE_TAG}"
+                REP_OWNER
+                git config --global user.email "dranjith956@gmail.com"
+                git config --global user.name "ranjith413"
+                git checkout -b "${BRANCH}"
+                sed -i "s/^\([[:space:]]*tag:\).*/\1 ${BRANCH}/" values.yaml
+                git add values.yaml
+                git commit -m "release: update image tag ${BRANCH}"
+                git push https://${GIT_USER}:${GIT_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git "${BRANCH}"
+                 """
+
+            }
+        }
+        }
+
+        
+    }
 
     }
     post {
