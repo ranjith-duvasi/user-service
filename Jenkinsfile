@@ -63,9 +63,9 @@
                 sh '''
                 cd helm-charts/
                 BRANCH="release/${IMAGE_TAG}"
-                REPO_OWNER="ranjith413"
+                REPO_OWNER="ranjith-duvasi"
                 git config --global user.email "dranjith956@gmail.com"
-                git config --global user.name "ranjith413"
+                git config --global user.name "ranjith-duvasi"
                 git checkout -b "${BRANCH}"
                 sed -i "s/^\\([[:space:]]*tag:\\).*/\\1 ${IMAGE_TAG}/" values.yaml
                 git add values.yaml
