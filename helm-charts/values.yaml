@@ -4,7 +4,7 @@ appname: user-service
 
 image:
   repository: ranjith413
-  tag: v2025-2
+  tag: v2025-27
 
   pullPolicy: IfNotPresent
 
