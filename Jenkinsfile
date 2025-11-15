@@ -64,13 +64,20 @@
                 cd helm-charts/
                 BRANCH="release/${IMAGE_TAG}"
                 REPO_OWNER="ranjith-duvasi"
+                REPO_NAME="${IMAGE_NAME}"
+                COMMIT_MESSAGE="release: update image tag ${BRANCH}"
                 git config --global user.email "dranjith956@gmail.com"
                 git config --global user.name "ranjith-duvasi"
                 git checkout -b "${BRANCH}"
                 sed -i "s/^\\([[:space:]]*tag:\\).*/\\1 ${IMAGE_TAG}/" values.yaml
                 git add values.yaml
-                git commit -m "release: update image tag ${BRANCH}"
+                git commit -m "${COMMIT_MESSAGE}"
                 git push https://${GIT_USER}:${GIT_TOKEN}@github.com/${REPO_OWNER}/${IMAGE_NAME}.git "${BRANCH}"
+
+                #create a PR
+                curl -s -X POST -H "Authorization: token ${GIT_TOKEN}" \
+                -d '{"title":"${COMMIT_MESSAGE}","head":"${BRANCH}","base":"main","body":"Auto PR by Jenkins"}' \
+                https://api.github.com/repos/${REPO_OWNER}/{REPO_NAME}/pulls
                  '''
 
             }
