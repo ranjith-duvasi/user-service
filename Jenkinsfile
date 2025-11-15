@@ -63,14 +63,14 @@
                 sh '''
                 cd helmcharts/
                 BRANCH="release/${IMAGE_TAG}"
-                REP_OWNER
+                REP0_OWNER="ranjith413"
                 git config --global user.email "dranjith956@gmail.com"
                 git config --global user.name "ranjith413"
                 git checkout -b "${BRANCH}"
-                sed -i "s/^\([[:space:]]*tag:\).*/\1 ${BRANCH}/" values.yaml
+                sed -i "s/^\\([[:space:]]*tag:\\).*/\\1 ${IMAGE_TAG}/" values.yaml
                 git add values.yaml
                 git commit -m "release: update image tag ${BRANCH}"
-                git push https://${GIT_USER}:${GIT_TOKEN}@github.com/${REPO_OWNER}/${REPO_NAME}.git "${BRANCH}"
+                git push https://${GIT_USER}:${GIT_TOKEN}@github.com/${REPO_OWNER}/${IMAGE_NAME}.git "${BRANCH}"
                  '''
 
             }
