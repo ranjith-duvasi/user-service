@@ -81,7 +81,7 @@
                 -H "Content-Type: application/json" \
                 -d @- "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls" <<EOF
 {
-  "title": "${COMMIT_MESSAGE}",
+  "title": "update image tag ${BRANCH}",
   "head": "${BRANCH}",
   "base": "main",
   "body": "Auto PR by Jenkins"
