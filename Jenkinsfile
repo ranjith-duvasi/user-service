@@ -75,10 +75,18 @@
                 git push https://${GIT_USER}:${GIT_TOKEN}@github.com/${REPO_OWNER}/${IMAGE_NAME}.git "${BRANCH}"
 
                 #create a PR
-                curl -v -X POST -H "Authorization: token ${GIT_TOKEN}" \
+                curl -s -X POST \
+                -H "Authorization: token ${GIT_TOKEN}" \
                 -H "Accept: application/vnd.github+json" \
-                -d "{\"title\":\"update image tag ${BRANCH}\",\"head\":\"${BRANCH}\",\"base\":\"main\",\"body\":\"Auto PR by Jenkins\"}" \
-                "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls"
+                -H "Content-Type: application/json" \
+                -d @- "https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/pulls" <<EOF
+{
+  "title": "${COMMIT_MESSAGE}",
+  "head": "${BRANCH}",
+  "base": "main",
+  "body": "Auto PR by Jenkins"
+}
+EOF
                 '''
             }
         }
